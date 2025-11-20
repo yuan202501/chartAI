@@ -1,0 +1,298 @@
+@import '../../styles/variables.css';
+
+.input-area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-secondary);
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: var(--spacing-sm);
+  min-height: 48px;
+}
+
+.textarea {
+  flex: 1;
+  min-height: 48px;
+  max-height: 200px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-md);
+  color: var(--text-primary);
+  resize: vertical;
+  transition: all var(--transition-fast);
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.1);
+}
+
+.textarea:disabled {
+  background-color: var(--bg-tertiary);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+
+.textarea::placeholder {
+  color: var(--text-tertiary);
+}
+
+.send-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: var(--radius-md);
+  color: white;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.send-button:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.send-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.send-button:disabled {
+  background-color: var(--text-disabled);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.send-button .icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.send-button.is-loading .icon {
+  animation: spin 1s linear infinite;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.tools {
+  display: flex;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+.model-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.model-select {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.model-select:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.1);
+}
+
+.character-counter {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  margin-left: auto;
+}
+
+.character-counter.warning {
+  color: var(--warning-color);
+}
+
+.character-counter.error {
+  color: var(--error-color);
+}
+
+/* File input styles */
+.file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.file-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.file-label:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-focus);
+  color: var(--text-primary);
+}
+
+.file-label:has(+ .file-input:disabled) {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Voice input styles */
+.voice-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.voice-button:hover:not(:disabled) {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-focus);
+  color: var(--text-primary);
+}
+
+.voice-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.voice-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.voice-button.recording {
+  background-color: var(--error-color);
+  color: white;
+  animation: pulse 1.5s infinite;
+}
+
+.voice-button .icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .input-area {
+    padding: var(--spacing-sm);
+  }
+  
+  .textarea {
+    min-height: 40px;
+    font-size: var(--font-size-sm);
+  }
+  
+  .send-button {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .send-button .icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .tools {
+    justify-content: center;
+  }
+  
+  .model-selector {
+    justify-content: center;
+  }
+  
+  .character-counter {
+    text-align: center;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .input-area {
+    background-color: var(--bg-secondary);
+  }
+  
+  .textarea {
+    background-color: var(--bg-tertiary);
+  }
+  
+  .textarea:focus {
+    box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.2);
+  }
+  
+  .file-label {
+    background-color: var(--bg-tertiary);
+  }
+  
+  .voice-button {
+    background-color: var(--bg-tertiary);
+  }
+}

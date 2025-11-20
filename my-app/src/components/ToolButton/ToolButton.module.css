@@ -1,0 +1,183 @@
+@import '../../styles/variables.css';
+
+.tool-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  min-width: 80px;
+  height: 36px;
+  gap: var(--spacing-xs);
+}
+
+.tool-button:hover:not(:disabled) {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-focus);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.tool-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.tool-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.tool-button.active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.tool-button.active:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+.tool-button.has-notification {
+  overflow: visible;
+}
+
+.tool-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.tool-text {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.notification-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--error-color);
+  border-radius: var(--radius-round);
+  border: 2px solid var(--bg-primary);
+  animation: pulse 2s infinite;
+}
+
+.notification-dot.has-count {
+  width: auto;
+  height: auto;
+  min-width: 16px;
+  min-height: 16px;
+  padding: 2px 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Variants */
+.tool-button.small {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  min-width: 60px;
+  height: 28px;
+}
+
+.tool-button.large {
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--font-size-md);
+  min-width: 100px;
+  height: 44px;
+}
+
+.tool-button.outline {
+  background-color: transparent;
+  border-width: 2px;
+}
+
+.tool-button.ghost {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.tool-button.ghost:hover:not(:disabled) {
+  background-color: var(--bg-tertiary);
+  border-color: var(--bg-tertiary);
+}
+
+/* Group styles */
+.tool-button-group {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.tool-button-group .tool-button:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.tool-button-group .tool-button:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: -1px;
+}
+
+.tool-button-group .tool-button:hover:not(:disabled) {
+  z-index: 1;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .tool-button {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    min-width: 70px;
+    height: 32px;
+    font-size: var(--font-size-xs);
+  }
+  
+  .tool-icon {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .tool-text {
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .tool-button {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-secondary);
+  }
+  
+  .tool-button:hover:not(:disabled) {
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-focus);
+  }
+  
+  .notification-dot {
+    border-color: var(--bg-secondary);
+  }
+}

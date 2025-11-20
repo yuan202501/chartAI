@@ -1,0 +1,230 @@
+@import '../../styles/variables.css';
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  animation: slideInUp var(--transition-fast) ease-out;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.message.user {
+  background-color: var(--bg-chat-user);
+  align-self: flex-end;
+  margin-left: auto;
+  max-width: 80%;
+}
+
+.message.assistant {
+  background-color: var(--bg-chat-assistant);
+  align-self: flex-start;
+  margin-right: auto;
+  border: 1px solid var(--border-secondary);
+}
+
+.message.error {
+  background-color: #fff2f0;
+  border: 1px solid #ffccc7;
+  color: var(--error-color);
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.message-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-round);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: var(--font-size-sm);
+  color: white;
+  flex-shrink: 0;
+}
+
+.message-avatar.user {
+  background-color: var(--primary-color);
+}
+
+.message-avatar.assistant {
+  background-color: var(--secondary-color);
+}
+
+.message-role {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.message-content {
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-lg);
+  color: var(--text-primary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.message-content code {
+  background-color: var(--bg-secondary);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.9em;
+}
+
+.message-content pre {
+  background-color: var(--bg-secondary);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin: var(--spacing-sm) 0;
+}
+
+.message-content pre code {
+  background: none;
+  padding: 0;
+}
+
+.message-content blockquote {
+  border-left: 4px solid var(--border-primary);
+  padding-left: var(--spacing-md);
+  margin: var(--spacing-sm) 0;
+  color: var(--text-secondary);
+}
+
+.message-content a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.message-content a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+.message-timestamp {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  margin-top: var(--spacing-xs);
+}
+
+/* Streaming indicator */
+.streaming-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.streaming-indicator .pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-color);
+  border-radius: var(--radius-round);
+  animation: pulse 1.4s infinite;
+}
+
+.streaming-indicator .text {
+  font-weight: 500;
+}
+
+/* Error message specific styles */
+.message.error .message-content {
+  color: var(--error-color);
+  font-weight: 500;
+}
+
+.message.error .message-timestamp {
+  color: #ff7875;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .message {
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .message.user {
+    max-width: 90%;
+  }
+  
+  .message-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+  
+  .message-content {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-md);
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .message.user {
+    background-color: var(--bg-chat-user);
+  }
+  
+  .message.assistant {
+    background-color: var(--bg-chat-assistant);
+  }
+  
+  .message.error {
+    background-color: #2a1215;
+    border-color: #53141a;
+  }
+  
+  .message-content code {
+    background-color: var(--bg-tertiary);
+  }
+  
+  .message-content pre {
+    background-color: var(--bg-tertiary);
+  }
+  
+  .streaming-indicator {
+    background-color: var(--bg-tertiary);
+  }
+}
+
+
+/* 打印机样式文本与光标 */
+.typewriter {
+  font-family: Menlo, Monaco, 'Courier New', monospace;
+  white-space: pre-wrap;
+  text-align: left;
+}
+
+.caret {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  vertical-align: text-bottom;
+  background: var(--text-primary);
+  margin-left: 0;
+  animation: caret-blink 10s step-start infinite;
+}
+
+@keyframes caret-blink {
+  50% { opacity: 0; }
+}
+
+/* 可根据需要微调颜色变量：
+   --text-primary, --bg-secondary, 等在全局里已定义 */
